@@ -1,5 +1,5 @@
 <?php
-include 'common.php'; // Include the common functions and database connection
+include 'common.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST["address"];
@@ -15,10 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $target_dir = "uploads/";
     $uploadOk = 1;
-    $main_image_path = $target_dir . basename($_FILES["image"]["name"]); // Main image handling
+    $main_image_path = $target_dir . basename($_FILES["image"]["name"]); 
     $imageFileType = strtolower(pathinfo($main_image_path, PATHINFO_EXTENSION));
 
-    // Validate and move the main image
     if (!getimagesize($_FILES["image"]["tmp_name"]) || $_FILES["image"]["size"] > 500000 || !in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])) {
         echo "File is not a valid image or too large.";
         $uploadOk = 0;
